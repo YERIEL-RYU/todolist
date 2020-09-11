@@ -20,6 +20,9 @@
         &.checked { //체크되었을때 보여줄 스타일
             svg{
                 color: #006888;
+            }
+            .text{
+                color: #adb5bd;
                 text-decoration: line-through; //글씨위에 줄
             }
         }
