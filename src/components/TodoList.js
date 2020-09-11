@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
+import {List} from 'react-virtualized';
 import './TodoList.scss';
 import TodoListItem from './TodoListItem';
-import {List} from 'react-virtualized';
 
 //todos라는 props을 받아옴
 const TodoList = ({todos, onRemove, onToggle}) => {
@@ -9,9 +9,9 @@ const TodoList = ({todos, onRemove, onToggle}) => {
         ({index, key, style})=> {
             const todo = todos[index];
             return (
-                <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} />
+                <TodoListItem todo={todo} key={key} onRemove={onRemove} onToggle={onToggle} style={style}/>
             );
-        },[onRemove, ontoggle, todos],
+        },[onRemove, onToggle, todos],
     )
     return (
         <List 
