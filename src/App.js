@@ -51,11 +51,23 @@ const App = () => {
     },[todos],
   ) ;
 
+   //todo의 checked를 변경하는 함수 매개변수 : id
+  //setTodos 함수에 map 함수를 사용
+  //map은 배열을 전체적으로 새로운 형태로 변환하여 생성할 때 사용 
+  //todos 배열을 전체적으로 읽어서 클릭한 id값과 todo의 아이디값을 비교해서 같은 todo만 checked를 변경하고 같지 않은 todo는 그대로 둔다.
+  const onToggle = useCallback(
+    id => {
+      setTodos(
+        todos.map(todo => todo.id === id ? {...todo, checked: !todo.checked} : todo,),
+      );
+    },[todos],
+  )
+
   return (
     <TodoTemplate>
       <TodoInsert onInsert={onInsert}/>
       {/* TodoList의 props로 todos를 전달함 */}
-      <TodoList todos={todos} onRemove={onRemove}/>  
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>  
     </TodoTemplate>
   )
 }
