@@ -61,14 +61,14 @@ const App = () => {
 
   const onRemove = useCallback (
     id => {
-      dispatchEvent({type:'REMOVE',id})
+      dispatch({type:'REMOVE',id})
     },[],
   ) ;
 
 
   const onToggle = useCallback(
     id => {
-      dispatch ({type:'TOGGLE', id});
+      dispatch({type:'TOGGLE', id});
     },[],
   )
 
