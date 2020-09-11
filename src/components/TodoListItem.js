@@ -4,7 +4,7 @@ import './TodoListItem.scss';
 import cn from 'classnames';
 
 //props로 TodoList에서 todo를 받아옴
-const TodoListItem = ({todo}) => {
+const TodoListItem = ({id,todo, onRemove}) => {
     //App.js에 정의 된 내용 중 text와 checked를 가져옴
     const {text, checked} =todo;
     return (
@@ -15,7 +15,7 @@ const TodoListItem = ({todo}) => {
                 {/* 삼항연산자 checked가 true라면 MdCheckBox, false라면 MdCheckBoxOutlineBlank */}
                 <div className="text"> {text} </div>
             </div>
-            <div className="remove">
+            <div className="remove" onClick={()=>onRemove(id)}>
                 <MdRemoveCircleOutline />
             </div>
         </div>

@@ -13,11 +13,12 @@ const TodoInsert = ({onInsert}) => {
     },[]); //컴포넌트가 처음 렌더링 될때만 함수 생성, 처음에 함수 생성하고 재사용 하면 되니까
 
     //이 함수가 호출 되면 props로 받아온 함수에 value 값을 넣어 호출하고 현재 value값을 초기화
-    const onSubmit = useCallback(e=> {
-        onInsert(value); //onInsert로 App.js에 있는 todos에 배열 추가
-        setValue(''); // 현재 value 값을 초기화 시켜줌
-        e.preventDefault(); //submit을 화면을 초기화 시키는데 현재 앱은 DB에 연결 된 것이 아니기 때문에 새로고침하면 의미가 없어서 새로고침을 방지
-    })
+    const onSubmit = useCallback(
+        e => {
+            onInsert(value); //onInsert로 App.js에 있는 todos에 배열 추가
+            setValue(''); // 현재 value 값을 초기화 시켜줌
+            e.preventDefault(); //submit을 화면을 초기화 시키는데 현재 앱은 DB에 연결 된 것이 아니기 때문에 새로고침하면 의미가 없어서 새로고침을 방지
+    },[onInsert, value]);
 
     return (
         <form className="TodoInsert" onSubmit={onSubmit}>
